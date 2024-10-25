@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Modal } from 'react-native';
+import React, { useState } from 'react';
 
 // Dictionary to store member images
 const memberImages = {
@@ -18,37 +18,44 @@ const members = [
 ];
 
 export default function MembersPopup() {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={styles.popup}>
-      <View style={styles.container}>
-        {/* Header */}
-        <View style={styles.text}>
-          <Text style={styles.header}>Members</Text>
-        </View>
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+        <Text style={styles.openButton}>Open Members</Text>
+      </TouchableOpacity>
 
-        {/* Member Count */}
-        <View style={styles.count}>
-          <Text style={styles.members}>{`${members.length} Members`}</Text>
-        </View>
-
-        {/* Members List */}
-        <View style={styles.memberContainer}>
-          {members.map((member, index) => (
-            <View key={index} style={styles.box}>
-              <Image source={memberImages[member.name]} style={styles.profileImage} />
-              <View>
-                <Text style={styles.member}>{member.name}</Text>
-                <Text style={styles.email}>{member.email}</Text>
-              </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <View style={styles.text}>
+              <Text style={styles.header}>Members</Text>
             </View>
-          ))}
+            <View style={styles.count}>
+              <Text style={styles.members}>{`${members.length} Members`}</Text>
+            </View>
+            <View style={styles.memberContainer}>
+              {members.map((member, index) => (
+                <View key={index} style={styles.box}>
+                  <Image source={memberImages[member.name]} style={styles.profileImage} />
+                  <View>
+                    <Text style={styles.member}>{member.name}</Text>
+                    <Text style={styles.email}>{member.email}</Text>
+                  </View>
+                </View>
+              ))}
+            </View>
+            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+              <Text style={styles.closeText}>Close</Text>
+            </TouchableOpacity>
+          </View>+
         </View>
-
-        {/* Close Button */}
-        <TouchableOpacity style={styles.closeButton}>
-          <Text style={styles.closeText}>Close</Text>
-        </TouchableOpacity>
-      </View>
+      </Modal>
     </View>
   );
 }
@@ -58,13 +65,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // dimmed background
   },
-  container: {
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'flex-end', // Aligns modal to the bottom
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dimmed background
+  },
+  modalContent: {
     backgroundColor: '#ffffff',
-    borderRadius: 12,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
     padding: 16,
-    width: '90%',
+    height: '50%', // Modal occupies 50% of the screen height
   },
   text: {
     paddingBottom: 8,
@@ -84,6 +96,7 @@ const styles = StyleSheet.create({
   },
   memberContainer: {
     marginBottom: 24,
+    flexGrow: 1, // Allow to grow for scrolling if needed
   },
   box: {
     flexDirection: 'row',
@@ -122,5 +135,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     color: '#02111A',
+  },
+  openButton: {
+    padding: 10,
+    backgroundColor: '#28a745',
+    color: '#fff',
+    borderRadius: 5,
   },
 });

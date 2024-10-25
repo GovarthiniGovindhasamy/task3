@@ -1,27 +1,31 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
-import TaskInfo from '../components/taskInfo';
-import CheckList from '../components/checkBox';
-import BottomTask from '../components/bottomTask';
-import LogExpense from '../components/logExpanse';
-import Users from '../components/users';
-import Comments from '../components/commands';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import TaskInfo from '../components/TaskInfo';
+import CheckList from '../components/CheckBox';
+import BottomTask from '../components/BottomTask';
+import LogExpense from '../components/LogExpanse';
+import Users from '../components/Users';
+import Comments from '../components/Commands';
 
 export default function Taskscreen() {
   return (
     <ScrollView>
-      <View style={StyleSheet.container}>
-      <TaskInfo />
-      <CheckList />
-      <LogExpense/>
-      <Users />
-      <Comments/>
+      <View style={styles.container}>
+        <TaskInfo />
+        <CheckList />
+        <LogExpense />
+        <Users />
+        <Comments />
       </View>
     </ScrollView>
   );
 }
-const style=StyleSheet.compose({
-  container:{
-    backgroundColor: '#F4F5F7',
-  }
-})
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#F0F3F6',
+    marginleft: 16,
+    marginRight: 16,
+    marginbottom: 12,
+  },
+});

@@ -1,8 +1,8 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
-import ProjectInfo from '../components/projectInfo';
-import BackButton from '../components/backButton';
-import TaskList from '../components/taskList';
+import ProjectInfo from '../components/ProjectInfo';
+import BackButton from '../components/BackButton';
+import TaskList from '../components/TaskList';
 import ProjectMembers from '../components/projectMembers';
 
 export default function ProjectDetails() {
@@ -12,7 +12,7 @@ export default function ProjectDetails() {
         <BackButton />
         <ProjectInfo />
         <TaskList />
-        <ProjectMembers/>
+        <ProjectMembers />
       </ScrollView>
     </View>
   );
@@ -20,6 +20,6 @@ export default function ProjectDetails() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F0F3F6',
+    backgroundColor: 'black',
   },
 });

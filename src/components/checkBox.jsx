@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import TickIcon from '../icons/tick'; 
+import TickIcon from '../icons/Tick';
+
 export default function CheckList() {
   const [tasks, setTasks] = useState([
     { id: 1, title: 'Creating IA for project management', checked: false },
@@ -25,13 +26,19 @@ export default function CheckList() {
         </Text>
       </View>
 
-      {tasks.map((task) => (
-        <View key={task.id} style={styles.taskRow}>
+      {tasks.map((task, index) => (
+        <View
+          key={task.id}
+          style={[
+            styles.taskRow,
+            index !== tasks.length - 1 && styles.taskRowBorder, // Apply border only if not last item
+          ]}
+        >
           <TouchableOpacity
             style={[styles.checkbox, task.checked && styles.checkedBox]}
             onPress={() => toggleCheck(task.id)}
           >
-            {task.checked && <TickIcon />}
+            {task.checked && <TickIcon style={styles.tickIcon} />}
           </TouchableOpacity>
           <Text style={styles.taskText}>{task.title}</Text>
         </View>
@@ -51,6 +58,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 2,
     marginBottom: 20,
+    marginLeft: 16,
   },
   headerRow: {
     flexDirection: 'row',
@@ -58,26 +66,31 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   header: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
-    color: '#333',
+    color: '#02111A',
   },
   counter: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '500',
     color: '#0C356A',
     marginLeft: 8,
     backgroundColor: '#D7E3FF',
-    borderRadius: 50,
+    borderRadius: 25,
     height: 25,
     width: 25,
     textAlign: 'center',
-    paddingTop: 2,
+    lineHeight: 25,
   },
   taskRow: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 15,
+    paddingBottom: 8,
+  },
+  taskRowBorder: {
+    borderBottomWidth: 1,
+    borderColor: '#CBD2E1',
   },
   checkbox: {
     width: 22,
@@ -90,12 +103,16 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   checkedBox: {
-    backgroundColor: '#0C356A', // Blue background when checked
-    borderColor: '#0C356A',
+    backgroundColor: '#0C356A',
+    borderColor: '#D9DBDD',
+    borderWidth: 2,
   },
   taskText: {
-    fontSize: 14,
-    color: '#333',
+    fontSize: 11,
+    color: '#4E585E',
     fontWeight: '500',
+  },
+  tickIcon: {
+    color: '#FFF',
   },
 });

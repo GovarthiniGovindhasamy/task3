@@ -1,27 +1,47 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
-import ProjectInfo from '../components/projectInfo';
-import BackButton from '../components/backButton';
-import ProjectMembers from '../components/projectMembers';
-import TaskList from '../components/taskList';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+} from 'react-native';
+import ProjectInfo from '../components/ProjectInfo';
+import BackButton from '../components/BackButton';
+
+import TaskList from '../components/TaskList';
+import MemberList from '../components/MemberList';
+import AssetList from '../components/AssetList';
+import DocumentsSection from '../components/Documents';
 
 export default function FirstPage() {
   return (
     <ScrollView style={styles.container}>
-      <BackButton/>
-      <ProjectInfo/>
-      <TaskList/>
-      <ProjectMembers/>
+      <BackButton />
+      <ProjectInfo />
+      <TaskList />
+      <MemberList />
+      <AssetList />
+      <DocumentsSection />
     </ScrollView>
   );
 }
 
 const renderTaskItem = (title, id, date, statusText, statusStyle) => (
   <View style={styles.taskItem}>
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%',height:'30' }}>
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        height: '30',
+      }}>
       <View>
         <Text style={styles.taskTitle}>{title}</Text>
-        <Text style={styles.taskId}>ID {id} • {date}</Text>
+        <Text style={styles.taskId}>
+          ID {id} • {date}
+        </Text>
       </View>
       <Text style={[styles.taskStatus, statusStyle]}>{statusText}</Text>
     </View>
@@ -29,7 +49,7 @@ const renderTaskItem = (title, id, date, statusText, statusStyle) => (
 );
 const renderAssetItem = (image, name) => (
   <View style={styles.assetItem}>
-    <Image source={{ uri: image }} style={styles.assetImage} />
+    <Image source={{uri: image}} style={styles.assetImage} />
     <Text style={styles.assetText}>{name}</Text>
   </View>
 );
@@ -37,15 +57,16 @@ const renderAssetItem = (image, name) => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    backgroundColor: '#F4F5F7',
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: '#F0F3F6',
   },
   taskBox: {
     backgroundColor: '#FFF',
-    borderRadius: 10,
+    borderRadius: 12,
     padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowColor: '#000000',
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 2,

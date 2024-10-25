@@ -17,7 +17,7 @@ export default function MemberList() {
       <View style={styles.membersContainer}>
         <View style={styles.membersLeft}>
           <TouchableOpacity onPress={() => setModalVisible(true)}>
-            <Text style={styles.memberText}>Users</Text>
+            <Text style={styles.memberText}>Members</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.membersRight}>
@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 2,
-    marginLeft:16,
   },
   membersContainer: {
     flexDirection: 'row',

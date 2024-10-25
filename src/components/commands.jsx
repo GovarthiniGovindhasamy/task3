@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native';
+import SendIcon from '../icons/SendIcon';
 
 const Comments = ({ userName }) => {
   const [comment, setComment] = useState('');
@@ -64,7 +65,7 @@ const Comments = ({ userName }) => {
           onChangeText={setComment}
         />
         <TouchableOpacity onPress={handleSendComment} style={styles.sendButton}>
-          <Text style={styles.sendText}>➤</Text>
+         <SendIcon/>
         </TouchableOpacity>
       </View>
     </View>
@@ -73,19 +74,23 @@ const Comments = ({ userName }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
     padding: 16,
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 5,
     elevation: 3,
+    marginTop:12,
+    marginLeft:16,
+    marginBottom:17,
   },
   title: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
     marginBottom: 12,
+    color:'#02111A',
   },
   commentContainer: {
     flexDirection: 'row',
@@ -105,17 +110,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   name: {
-    fontWeight: '700',
-    fontSize: 14,
+    fontWeight: '500',
+    fontSize: 12,
+    color:'#02111A',
   },
   time: {
-    color: '#7a7a7a',
+    color: '#4E585E',
     fontSize: 12,
   },
   comment: {
-    marginTop: 2,
-    fontSize: 14,
-    color: '#555',
+    marginTop: 6,
+    fontSize: 12,
+    color: '#4E585E',
   },
   inputContainer: {
     flexDirection: 'row',
@@ -129,14 +135,14 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: 14,
-    color: '#333',
+    color: '#02111A',
   },
   sendButton: {
     marginLeft: 10,
   },
   sendText: {
     fontSize: 18,
-    color: '#007BFF',
+    color: '#6A7175',
   },
 });
 

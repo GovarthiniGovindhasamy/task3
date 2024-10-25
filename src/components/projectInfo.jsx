@@ -12,7 +12,7 @@ const ProjectInfo = () => {
       <Text style={styles.projectHeader}>Project Info</Text>
       <Text style={styles.lighttext}>Description</Text>
       <Text style={styles.content}>
-        At vero eos et accusamus et iusto odio dignissimos ducimus qui bland enorem yuren suufeen sulutan munur .. 
+        At vero eos et accusamus et iusto odio dignissimos ducimus qui bland 
         {showMore && ' Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
         <TouchableOpacity onPress={toggleShowMore}>
           <Text style={styles.seeMoreText}>{showMore ? 'See less' : 'See more'}</Text>
@@ -59,13 +59,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     color: '#02111A',
-    marginBottom: 10,
+    marginBottom: 20,
   },
   lighttext: {
     fontSize: 12,
     fontWeight: '400',
     color: '#6A7175',
-    marginBottom: 5,
+    marginBottom: 6,
   },
   content: {
     fontSize: 14,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     padding:16,
   },
   seeMoreText: {
-    color: '#0C356A',
+    color: '#D68200',
     marginTop: 5,
     fontWeight: '500',
   },

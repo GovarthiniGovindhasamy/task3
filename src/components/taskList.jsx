@@ -1,20 +1,23 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native';
-import ArrowRight from '../icons/arrowRight';
-import DropDown from '../icons/dropDown';
+import { useNavigation } from '@react-navigation/native';
+import ArrowRight from '../icons/ArrowRight';
+import DropDown from '../icons/DropDown';
+import Downarrowicon1 from '../icons/Downarrowicon1';
 
 const TaskList = () => {
+  const navigation = useNavigation();
+
   const tasks = [
     { id: '0214', title: 'Wireframes', date: '05/09/23', status: 'Yet to start', statusColor: '#FFDAD3' },
     { id: '0212', title: 'Inspection', date: '04/09/23', status: 'In-progress', statusColor: '#FFDDB8' },
     { id: '0201', title: 'Base layout', date: '02/09/23', status: 'Completed', statusColor: '#CBF2E0' },
   ];
 
-  // Function to set text color for status
   const getStatusTextColor = (status) => {
     switch (status) {
       case 'Yet to start':
-        return '#FF4500';
+        return '#DF3813';
       case 'In-progress':
         return '#D17800';
       case 'Completed':
@@ -34,7 +37,9 @@ const TaskList = () => {
         <TouchableOpacity style={[styles.statusButton, { backgroundColor: item.statusColor }]}>
           <Text style={[styles.statusText, { color: getStatusTextColor(item.status) }]}>{item.status}</Text>
         </TouchableOpacity>
-        <ArrowRight width={16} height={16} />
+          <TouchableOpacity onPress={() => navigation.navigate('Taskscreen', { taskId: item.id })}>
+          <ArrowRight width={16} height={16} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -48,7 +53,7 @@ const TaskList = () => {
           </Text>
           <TouchableOpacity style={styles.filterButton}>
             <Text style={styles.filterButtonText}>All</Text>
-            <DropDown width={16} height={16} />
+            <Downarrowicon1 width={16} height={16} />
           </TouchableOpacity>
         </View>
         <FlatList
@@ -68,7 +73,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderRadius: 10,
     padding: 16,
-    shadowColor: '#000',
+    shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
@@ -86,21 +91,18 @@ const styles = StyleSheet.create({
     color: '#02111A',
   },
   taskCount: {
-    color: '#9C9EB9',
+    color: '#0C356A',
     backgroundColor: '#D7E3FF',
-    borderRadius: 12, // Half of the width and height to make it circular
-    width: 24, // Equal width and height for a circle
-    height: 24,
-    textAlign: 'center', // Center the text horizontally
-    lineHeight: 24, // Center the text vertically
+    textAlign: 'center',
+    lineHeight: 24,
     fontWeight: '600',
   },
   filterButton: {
-    flexDirection: 'row', // Align text and arrow in a row
-    alignItems: 'center', // Vertically center text and arrow
-    justifyContent: 'space-between', // Ensure spacing between text and arrow
-    width: 48, // Set the width to 48
-    height: 24, // Set the height to 24
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: 48,
+    height: 24,
     paddingVertical: 4,
     paddingHorizontal: 8,
     borderRadius: 4,
@@ -117,13 +119,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 8,
     borderBottomWidth: 1,
-    borderBottomColor: '#d9dbdd',
+    borderBottomColor: '#D9DBD',
   },
   taskContent: {
     flex: 1,
   },
   taskStatusContainer: {
-    flexDirection: 'row', // Arrange status text and arrow in a row
+    flexDirection: 'row',
     alignItems: 'center',
   },
   title: {
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 12,
     borderRadius: 6,
-    marginRight: 8, // Space between status text and arrow
+    marginRight: 8,
   },
   statusText: {
     fontSize: 12,

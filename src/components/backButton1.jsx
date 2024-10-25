@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import Back from '../icons/back'; // Assuming Back is your custom icon
-import ArrowLeft from '../icons/arrowLeft';
+import Back from '../icons/Back'; // Assuming Back is your custom icon
+import ArrowLeft from '../icons/ArrowLeft';
 
 export default function BackButtons() {
   return (
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-   
   },
   circle: {
     borderRadius: 50,
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 24,
-    paddingLeft:3,
+    paddingLeft: 3,
   },
   headertext: {
     marginTop: 32,
@@ -43,6 +42,6 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 19,
     fontWeight: '700',
-    color:'#02111A',
+    color: '#02111A',
   },
 });

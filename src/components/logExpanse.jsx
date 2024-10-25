@@ -1,34 +1,59 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import PlusIcon from '../icons/plus'
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView } from 'react-native';
+import PlusIcon from '../icons/Plus'; 
+import CreateExpenseForm from './CreateExponseForm';
 
 export default function LogExpense() {
-  const expenses = [
-    { id: 1, name: 'Expense name', date: '04/09/23', amount: '1050 AED' },
-    { id: 2, name: 'Note buying', date: '01/09/23', amount: '241 AED' },
-  ];
+  const [modalVisible, setModalVisible] = useState(false);
+  const [expenses, setExpenses] = useState([]);
+
+  const handleAddIconClick = () => {
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleSaveExpense = (newExpense) => {
+    setExpenses(prevExpenses => [...prevExpenses, newExpense]);
+    handleCloseModal();
+  };
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.headerRow}>
         <View style={styles.headerTextRow}>
           <Text style={styles.header}>Log expense</Text>
-          <Text style={styles.counter}>02</Text>
+          <Text style={styles.counter}>0{expenses.length}</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.iconContainer} onPress={handleAddIconClick}>
           <PlusIcon />
         </TouchableOpacity>
       </View>
 
-      {/* Expenses */}
-      {expenses.map((expense) => (
-        <View key={expense.id} style={styles.expenseRow}>
-          <Text style={styles.expenseText}>
-            {expense.name} • {expense.date} • {expense.amount}
-          </Text>
-        </View>
-      ))}
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={handleCloseModal}
+      >
+        <CreateExpenseForm onClose={handleCloseModal} onSave={handleSaveExpense} />
+      </Modal>
+
+      <ScrollView>
+        {expenses.length > 0 ? (
+          expenses.map((expense) => (
+            <View key={expense.id} style={styles.expenseRow}>
+              <Text style={styles.expenseText}>
+                {expense.name} • {expense.date} • {expense.amount}
+              </Text>
+            </View>
+          ))
+        ) : (
+          <Text>No expenses logged yet.</Text>
+        )}
+      </ScrollView>
     </View>
   );
 }
@@ -37,19 +62,19 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF',
     borderRadius: 10,
-    padding: 20,
+    padding: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 2,
-    marginBottom: 20,
+    marginBottom: 12,
+    marginLeft: 16,
   },
   headerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
   },
   headerTextRow: {
     flexDirection: 'row',
@@ -58,21 +83,22 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#000',
+    color: '#02111A',
   },
   counter: {
     fontSize: 12,
     fontWeight: '500',
-    color: '#000',
+    color: '#0C356A',
     backgroundColor: '#D7E3FF',
     borderRadius: 50,
-    paddingHorizontal: 8,
+    paddingHorizontal: 5,
     paddingVertical: 2,
-    marginLeft: 10,
+    marginLeft: 5,
+  },
+  iconContainer: {
+    padding: 5,
   },
   expenseRow: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
     paddingVertical: 10,
   },
   expenseText: {
