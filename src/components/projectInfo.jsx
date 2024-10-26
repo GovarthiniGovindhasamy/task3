@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+
 const ProjectInfo = () => {
   const [showMore, setShowMore] = useState(false);
   const toggleShowMore = () => {
@@ -40,8 +40,6 @@ const ProjectInfo = () => {
     </View>
   );
 };
-
-
 
 const styles = StyleSheet.create({
   projectBox: {
@@ -86,15 +84,16 @@ const styles = StyleSheet.create({
   statusColumn: {
     flex: 1.5,
     justifyContent: 'center',
-    alignItems: 'center',
   },
   rowLabel: {
     fontSize: 12,
     color: '#6A7175',
     marginBottom: 5,
     fontWeight:'400',
+    paddingLeft:32,
   },
   rowValue: {
+    paddingLeft:32,
     fontSize: 14,
     fontWeight: '600',
     color: '#4E585E',
@@ -102,13 +101,14 @@ const styles = StyleSheet.create({
   progressBarContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingLeft:20,
   },
   progressBackground: {
     width: 69,
     height: 10,
     backgroundColor: '#CBF2E0',
     borderRadius: 5,
-    marginLeft: 40,
+    marginLeft: 10,
   },
   progressFill: {
     height: 10,
@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
   statusText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#4E5855E',
-    padding:16,
+    color: '#4E585E',
+    marginLeft: 8,
   },
   seeMoreText: {
     color: '#D68200',

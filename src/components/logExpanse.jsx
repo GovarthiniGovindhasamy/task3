@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 2,
-    marginBottom: 12,
+    marginBottom: 8,
     marginLeft: 16,
   },
   headerRow: {

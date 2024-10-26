@@ -1,14 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
-import Back from '../icons/Back';
+import { useNavigation } from '@react-navigation/native';
 import ArrowLeft from '../icons/ArrowLeft';
 
 export default function BackButton() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <View style={styles.circle}>
+      <TouchableOpacity style={styles.circle} onPress={() => navigation.goBack()}>
         <ArrowLeft style={styles.icon} />
-      </View>
+      </TouchableOpacity>
       <View style={styles.headertext}>
         <Text style={styles.header}>Metanas UI Design</Text>
       </View>

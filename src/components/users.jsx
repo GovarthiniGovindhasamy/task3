@@ -40,7 +40,7 @@ export default function MemberList() {
 
 const styles = StyleSheet.create({
   section: {
-    marginTop: 16,
+    marginTop: 4,
     backgroundColor: '#FFF',
     borderRadius: 10,
     padding: 16,

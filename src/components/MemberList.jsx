@@ -6,7 +6,6 @@ const members = [
   { id: '1', name: 'Mohammed', email: 'abdul_metanas@gmail.com', image: require('../assets/member1.png') },
   { id: '2', name: 'Aaban', email: 'aaban_metanas@gmail.com', image: require('../assets/member1.png') },
   { id: '3', name: 'Hamza', email: 'hamza_metanas@gmail.com', image: require('../assets/member1.png') },
-  { id: '4', name: 'Abbas', email: 'abbas_metanas@gmail.com', image: require('../assets/member1.png') },
 ];
 
 export default function MemberList() {
@@ -25,7 +24,7 @@ export default function MemberList() {
             <Image key={index} source={member.image} style={styles.memberAvatar} />
           ))}
           <View style={styles.moreMembers}>
-            <Text style={styles.moreText}>+{members.length - 3}</Text>
+            <Text style={styles.moreText}>+{members.length - 2}</Text>
           </View>
         </View>
       </View>
